@@ -1,6 +1,7 @@
 from string import ascii_uppercase
 from unittest import TestCase
 from boggle import BoggleWordList, BoggleBoard
+from random import choice
 
 TEST_DICTIONARY_PATH = "./test_dictionary.txt"
 
@@ -10,8 +11,12 @@ class BoggleWordListTestCase(TestCase):
 
     def test_word_list(self):
         """Test that word list creation works, and check_word function works."""
-
-        self.assertFalse("Write test expectations for this!")
+        word_list = BoggleWordList()
+        words = list(word_list.words)
+        random_word = choice(words)
+        
+        self.assertTrue(word_list.check_word(random_word))
+        self.assertFalse(word_list.check_word("MORDEKAISER"))
 
 
 class BoggleBoardTestCase(TestCase):

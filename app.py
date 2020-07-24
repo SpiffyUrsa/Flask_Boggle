@@ -30,4 +30,4 @@ def homepage():
 
     return render_template(
         "index.html",
-        board=board)
+        board_in_template=board)

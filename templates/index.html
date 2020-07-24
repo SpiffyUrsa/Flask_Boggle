@@ -10,9 +10,20 @@
 <main>
   <table class="board">
   <!-- fill in -->
+  {% for row in board_in_template %}
+    <tr>
+      {% for letter in row %}
+        <td>{{ letter }}</td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
   </table>
 
   <!-- form here -->
+  <form action='#'>
+    <input type="text">
+    <button>Submit</button>
+  </form>
 </main>
 
 <p class="msg">
