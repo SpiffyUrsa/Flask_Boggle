@@ -36,22 +36,19 @@ def homepage():
 @app.route("/api/score-word", methods=["POST"])
 def score_word():
     """not sure do later"""
-    word = request.get_json() #not sure what format this is in, test when implemented
-    print(word) #DEBUG
-
-
-    is_word = word_list.check_word(word['word'])
-
-    # session[SESS_BOARD_UUID_KEY] = uuid4()#Debugging; confirmed
-    # print (session[SESS_BOARD_UUID_KEY])
-
+    word = request.get_json()['word'] #working
+   
     test_board = boards[session[SESS_BOARD_UUID_KEY]]
+    
 
-    is_in_board = test_board.check_word_on_board(word) #Debugging; unconfirmed
+    # is_word = word_list.check_word(word)
+    # is_in_board = test_board.check_word_on_board(word)
 
-    if not is_word:
-        return jsonify({result: "not-word"})
-    elif not is_in_board:
-        return jsonify({result: "not-on-board"})
-    elif is_word:
-        return jsonify({result: "ok", word: "[the word]"})
+
+    # if not is_word:
+    #     return jsonify({result: "not-word"})
+    # elif not is_in_board:
+    #     return jsonify({result: "not-on-board"})
+    # elif is_word:
+    #     return jsonify({result: "ok", word: "[the word]"})
+    return "blah"
