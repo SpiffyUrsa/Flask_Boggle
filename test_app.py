@@ -29,4 +29,9 @@ class BoggleAppTestCase(TestCase):
             self.assertIn("<form action='#'>", html)
 
 
-        
+    def test_api_score_word(self):
+        """Make sure the word is valid"""
+
+        with self.client as client:
+            response = client.post('/api/score-word')
+            json = 
