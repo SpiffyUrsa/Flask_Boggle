@@ -31,19 +31,17 @@ def homepage():
 
     return render_template(
         "index.html",
-        board=board)
+        board_in_template=board)
 
 @app.route("/api/score-word", methods=["POST"])
 def score_word():
-    """not sure do later"""
-    word = request.get_json()['word'].upper() #working
+    """Checks the word to see if it valid"""
+    word = request.get_json()['word'].upper() 
    
-    test_board = boards[session[SESS_BOARD_UUID_KEY]]
+    board = boards[session[SESS_BOARD_UUID_KEY]]
     
-
     is_word = word_list.check_word(word)
-    is_in_board = test_board.check_word_on_board(word)
-    
+    is_in_board = board.check_word_on_board(word)
 
     if not is_word:
         return jsonify({'result': "not-word"})

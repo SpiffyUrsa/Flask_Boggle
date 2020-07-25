@@ -26,12 +26,19 @@ class BoggleAppTestCase(TestCase):
 
             self.assertIn(SESS_BOARD_UUID_KEY, session)
             self.assertIn("<td>", html)
-            self.assertIn("<form action='#'>", html)
+            self.assertIn("<form action='#' id='submit-word'>", html)
 
 
     def test_api_score_word(self):
         """Make sure the word is valid"""
 
-        with self.client as client:
-            response = client.post('/api/score-word')
-            json = 
+        with app.test_client() as client:
+            client.get("/")
+            response = client.post('/api/score-word', json={ 'word': 'a' })
+            
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.get_json(), {'result': 'ok', 'word': 'A'})
+
+            # make a board to contain certain rows/letters and assertEquals to check for the right answer
+            
+            
